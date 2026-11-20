@@ -58,3 +58,36 @@ def manual_input():
         compare_sequences(seq1, seq2)
     except ValueError as e:
         print("Error:", e)
+def csv_input():
+    try:
+        file1 = input("\nEnter CSV file path 1: ")
+        file2 = input("Enter CSV file path 2: ")
+
+        df1 = pd.read_csv(file1)
+        df2 = pd.read_csv(file2)
+
+        print("\nFile 1 columns:", list(df1.columns))
+        col1 = input("Select sequence column from file 1: ")
+
+        print("\nFile 2 columns:", list(df2.columns))
+        col2 = input("Select sequence column from file 2: ")
+
+        if col1 not in df1.columns or col2 not in df2.columns:
+            print("Invalid column name!")
+            return
+
+        seq1 = validate_sequence(
+            "".join(df1[col1].dropna().astype(str))
+        )
+        seq2 = validate_sequence(
+            "".join(df2[col2].dropna().astype(str))
+        )
+
+        compare_sequences(seq1, seq2)
+
+    except FileNotFoundError:
+        print("Error: CSV file not found!")
+    except ValueError as e:
+        print("Error:", e)
+    except Exception as e:
+        print("Error:", e)
