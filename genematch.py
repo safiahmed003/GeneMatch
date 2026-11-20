@@ -50,3 +50,11 @@ def compare_sequences(seq1, seq2):
     print("LCS Length  :", len(common))
     print(f"Match       : {percentage:.2f}%")
     print("===================================")
+
+def manual_input():
+    try:
+        seq1 = validate_sequence(input("\nEnter DNA sequence 1: "))
+        seq2 = validate_sequence(input("Enter DNA sequence 2: "))
+        compare_sequences(seq1, seq2)
+    except ValueError as e:
+        print("Error:", e)
