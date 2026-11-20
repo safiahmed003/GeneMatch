@@ -28,3 +28,14 @@ def lcs(seq1, seq2):
             j -= 1
 
     return "".join(result[::-1])
+
+def validate_sequence(seq):
+    seq = "".join(seq.split()).upper()
+
+    if not seq:
+        raise ValueError("DNA sequence cannot be empty.")
+
+    if any(char not in "ACGTN" for char in seq):
+        raise ValueError("Invalid DNA sequence! Use only A, C, G, T, N.")
+
+    return seq
