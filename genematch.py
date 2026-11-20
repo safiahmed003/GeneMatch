@@ -91,3 +91,27 @@ def csv_input():
         print("Error:", e)
     except Exception as e:
         print("Error:", e)
+
+def main():
+    while True:
+        print("\n========== LCS DNA ANALYZER ==========")
+        print("1. Manual DNA Sequence Comparison")
+        print("2. DNA Sequence Comparison Using CSV")
+        print("3. Exit")
+        print("======================================")
+
+        choice = input("Select an option: ")
+
+        if choice == "1":
+            manual_input()
+        elif choice == "2":
+            csv_input()
+        elif choice == "3":
+            print("Program terminated.")
+            break
+        else:
+            print("Invalid option! Please select 1, 2, or 3.")
+
+
+if __name__ == "__main__":
+    main()
